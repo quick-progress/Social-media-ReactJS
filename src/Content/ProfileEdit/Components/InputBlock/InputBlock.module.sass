@@ -1,0 +1,24 @@
+@import './../../../Mixins'
+@import './../../../Colors'
+@import './../../../Fonts'  
+  
+.inputBlock
+  width: 100%
+  +column
+.input
+  display: block
+  padding: 7px
+  font-size: 15px
+  +regular
+  border: 2px solid #aaaaaa
+  color: #686868
+  &:active, &:focus
+    outline: none
+    border: 2px solid $lightBlue
+    color: #000000
+.label
+  font-size: 14px
+  color: #023853
+  +italic
+  display: block
+  margin-bottom: 5px

@@ -1,0 +1,37 @@
+@import './../../../Mixins'
+@import './../../../Colors'
+@import './../../../Fonts'
+
+.userDataBlock
+  display: flex
+  flex-direction: column
+  &__name
+    display: block
+    margin-bottom: 30px
+    +semiBold
+    font-size: 28px
+    color: #2d2d2d
+  &__infoList
+    padding-left: 20px
+    margin-bottom: 30px
+  &__infoItem
+    font-size: 18px
+    list-style: none
+    color: #656565
+  &__edit
+    padding: 5px 30px
+    border: 2px solid #efefef
+    background-color: #efefef
+    font-size: 16px
+    color: #949494
+    +semiBold
+    transition: 0.3s ease-in-out
+    &:hover, &:active, &:focus
+      outline: none
+      border: 2px solid #575757
+      background-color: #efefef
+      color: #575757
+      cursor: pointer
+      
+
+

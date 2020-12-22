@@ -1,0 +1,40 @@
+@import './../../../Mixins'
+@import './../../../Colors'
+@import './../../../Fonts'
+
+.addPost
+  display: flex
+  align-items: flex-start
+  &__newPost
+    +regular
+    flex-grow: 1
+    height: 150px
+    border: 2px solid #d5d5d5
+    color: #949494
+    padding: 10px
+    margin-right: 10px
+    transition: 0.3s ease-in-out
+    resize: none
+    &:focus, &:active
+      outline: none
+      color: #575757
+      border: 2px solid #575757
+
+  &__btn
+    flex-grow: none
+    padding: 5px 30px
+    border: 2px solid #efefef
+    background-color: #efefef
+    font-size: 16px
+    color: #949494
+    +semiBold
+    transition: 0.3s ease-in-out
+    &:hover, &:active, &:focus
+      outline: none
+      border: 2px solid #575757
+      background-color: #efefef
+      color: #575757
+      cursor: pointer
+
+
+

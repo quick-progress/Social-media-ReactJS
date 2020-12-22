@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import classes from './UserPhotoBlock.module.css';
 
-const UserPhotoBlock = () => {
+const UserPhotoBlock = (props) => {
   return(
-        <div className={classes.person}>
-          <div className={`${classes['person__photo-wrap']} header__person`}>
-            <img src="empty-photo.jpg" alt="Фото профиля" className={classes.person__photo}></img>
+        <div className={`${classes.person} ${props.className}`}>
+          <div className={classes['person__photo-wrap']}>
+            <img src={props.photo} alt="Фото профиля" className={classes.person__photo}></img>
           </div>
-          <span className={classes.person__name}>Георгий</span>
+        <span className={classes.person__name}>{props.name}</span>
         </div>
   );
 };

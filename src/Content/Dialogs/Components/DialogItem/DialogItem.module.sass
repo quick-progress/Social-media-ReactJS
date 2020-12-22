@@ -1,0 +1,25 @@
+@import './../../../Mixins'
+@import './../../../Colors'
+@import './../../../Fonts'
+  
+.dialogItem
+  text-decoration: none
+  list-style: none
+  padding: 5px 15px
+  width: 100%
+  margin-bottom: 5px
+  +regular
+  transition: 0.2s ease-in-out
+  &:last-child
+    margin-bottom: 0
+  &_active
+    background-color: #cae4ff
+    color: #002b6c
+  &:hover
+    background-color: #cae4ff
+    cursor: pointer
+  &__link
+    text-decoration: none
+    color: #000000
+    &:visited
+      color: #000000

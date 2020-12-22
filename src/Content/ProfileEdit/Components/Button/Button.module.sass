@@ -1,0 +1,21 @@
+@import './../../../Mixins'
+@import './../../../Colors'
+@import './../../../Fonts'  
+  
+.button
+  display: flex
+  padding: 7px
+  width: 200px
+  justify-content: center
+  font-size: 16px
+  +semiBold
+  margin-bottom: 45px
+  background-color: rgba(14,177,232,0.3)
+  border: none
+  border: 2px solid $lightBlue
+  transition: ease-in-out 0.3s
+  &:hover
+      cursor: pointer
+      background-color: $lightBlue
+  &:active, &:focus
+      outline: none
