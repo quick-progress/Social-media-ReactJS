@@ -68,15 +68,16 @@ const store = {
                                                             ],
                 },],
   },
+  _observerState(state) {
+
+  },
   getState() {
     return this._state;
   },
-  observerState(state) {
-
-  },
   subscribe(observer) {
-    this.observerState = observer;
+    this._observerState = observer;
   },
+
   addPost() {
     if (this._state.postPage.newPostText === '') return;
     let newPost = {
@@ -85,16 +86,36 @@ const store = {
       date: '19.12.2020',
     };
     this._state.postPage.posts.unshift(newPost)
-    this.observerState(this._state);
+    this._observerState(this._state);
   },
   changeNewPostText(newText) {
     this._state.postPage.newPostText = newText;
-    this.observerState(this._state);
+    this._observerState(this._state);
   },
   getNewId(min = 0, max = 10000) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor( Math.random() * (max - min + 1) ) + min;
+  },
+
+  dispatch(action) {
+    switch(action.type) {
+      case 'ADD-POST': 
+        if (this._state.postPage.newPostText === '') return;
+        let newPost = {
+          id: this.getNewId(),
+          text: this._state.postPage.newPostText,
+          date: '19.12.2020',
+        };
+        this._state.postPage.posts.unshift(newPost)
+        this._observerState(this._state);
+        break;
+      case 'CHANGE-NEW-POST-TEXT':
+        this._state.postPage.newPostText = action.newText;
+        this._observerState(this._state);
+        break;
+      default: 
+    };
   },
 };
 export default store;

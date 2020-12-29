@@ -9,7 +9,7 @@ const PostsBlock = (props) => {
   });
   return(
           <div className={`${classes.postsBlock} ${props.className}`}>
-            <AddPost addPost={props.addPost} className={classes.postsBlock__newPost} newPostText={props.posts.newPostText} changeNewPostText={props.changeNewPostText}/>
+            <AddPost className={classes.postsBlock__newPost} newPostText={props.posts.newPostText} dispatch={props.dispatch}/>
             <div className={classes.postsBlock__list}>
               {posts}
             </div>

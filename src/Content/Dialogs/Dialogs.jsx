@@ -10,7 +10,6 @@ import './Dialogs.css';
 
 
 const Dialog = (props) => {
-  console.log(props);
   let dialogsElements = props.data.map( (item, i) => {
     return (<DialogItem name={item.name} id={item.id}/>);
   });

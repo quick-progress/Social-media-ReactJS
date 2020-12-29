@@ -3,7 +3,7 @@ import "./App.css";
 import Content from "./Content/Content";
 
 function App(props) {
-  return <Content data={props.data} addPost={props.addPost} changeNewPostText={props.changeNewPostText}/>;
+  return <Content data={props.data} dispatch={props.dispatch}/>;
 }
 
 export default App;

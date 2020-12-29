@@ -13,7 +13,7 @@ const Settings = (props) => {
               <PhotoBlock className="profile__photoBlock" photo={props.userdata.user.photo}/>
               <UserBlock userdata={props.userdata.user}/>
             </div>
-            <PostsBlock posts={props.userdata.postPage} avatar={props.userdata.user.photo} addPost={props.addPost} changeNewPostText={props.changeNewPostText}/>
+            <PostsBlock posts={props.userdata.postPage} avatar={props.userdata.user.photo} dispatch={props.dispatch}/>
           </div>
   );
 };

@@ -13,7 +13,7 @@ function Content(props) {
           <div className="content">
             <Header photo={props.data.user.photo} name={props.data.user.name}/>
             <main className="main">
-              <Route exact path="/profile" render={ () => <Profile userdata={props.data} addPost={props.addPost} changeNewPostText={props.changeNewPostText}/>}/>
+              <Route exact path="/profile" render={ () => <Profile userdata={props.data} dispatch={props.dispatch}/>}/>
               <Route exact path="/news" component={News}/>
               <Route exact path="/dialogs" render={ () => <Dialogs data={props.data.dialogs}/>}/>
               <Route exact path="/music" component={Music}/>

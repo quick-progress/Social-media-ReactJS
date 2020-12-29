@@ -4,14 +4,15 @@ import classes from './AddPost.module.css';
 let textarea = React.createRef();
 
 const AddPost = (props) => {
+  
   const addNewPost = () => {
-    props.addPost();
-    props.changeNewPostText('');
+    props.dispatch({type: 'ADD-POST'});
+    props.dispatch({type: 'CHANGE-NEW-POST-TEXT', newText: ''});
   };
 
   const changeNewPostText = () => {
     let text = textarea.current.value;
-    props.changeNewPostText(text);
+    props.dispatch({type: 'CHANGE-NEW-POST-TEXT', newText: text});
   };
 
   return(
