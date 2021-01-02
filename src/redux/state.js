@@ -1,4 +1,5 @@
-
+const ADD_POST = 'ADD-POST',
+      CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
 
 const store = {
   _state: {
@@ -83,7 +84,7 @@ const store = {
     let newPost = {
       id: this.getNewId(),
       text: this._state.postPage.newPostText,
-      date: '19.12.2020',
+      date: '02.01.2021',
     };
     this._state.postPage.posts.unshift(newPost)
     this._observerState(this._state);
@@ -98,19 +99,28 @@ const store = {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   },
 
+  _getDateNow() {
+    const today = new Date();
+    const day = (today.getDate() < 10)? `0${today.getDate()}`: today.getDate();
+    const month = ( (today.getMonth() + 1) < 10)? `0${(today.getMonth() + 1)}`: (today.getMonth() + 1);
+    let todaysDate = `${day}.${month}.${today.getFullYear()}`,
+        time = `${today.getHours()}:${today.getMinutes()}`;
+    return `${time}, ${todaysDate}`;
+  },
+
   dispatch(action) {
     switch(action.type) {
-      case 'ADD-POST': 
+      case ADD_POST: 
         if (this._state.postPage.newPostText === '') return;
         let newPost = {
           id: this.getNewId(),
           text: this._state.postPage.newPostText,
-          date: '19.12.2020',
+          date: this._getDateNow(),
         };
         this._state.postPage.posts.unshift(newPost)
         this._observerState(this._state);
         break;
-      case 'CHANGE-NEW-POST-TEXT':
+      case CHANGE_NEW_POST_TEXT:
         this._state.postPage.newPostText = action.newText;
         this._observerState(this._state);
         break;
@@ -120,34 +130,6 @@ const store = {
 };
 export default store;
 
-// let observerState = (state) => {
+export const addPostActionCreator = () => ({ type: ADD_POST, });
 
-// }
-
-// export  let subscribe = (observer) => {
-//   observerState = observer;
-// };
-
-// export let addPost = () => { 
-//   if (state.postPage.newPostText === '') return;
-//   let newPost = {
-//     id: getNewId(),
-//     text: state.postPage.newPostText,
-//     date: '19.12.2020',
-//   };
-//   state.postPage.posts.unshift(newPost)
-//   observerState(state);//renderDOMTree(state);
-// };
-
-// export const changeNewPostText = newText => {
-//   state.postPage.newPostText = newText;
-//   observerState(state);//renderDOMTree(state);
-// }; 
-
-// function getNewId(min = 0, max = 10000) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor( Math.random() * (max - min + 1) ) + min;
-// };
-
-
+export const changeNewPostActionCreator = (text) => ({ type: CHANGE_NEW_POST_TEXT, newText: text, });
