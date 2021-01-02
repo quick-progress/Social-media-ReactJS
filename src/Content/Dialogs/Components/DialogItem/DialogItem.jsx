@@ -11,6 +11,6 @@ const DialogItem = (props) => {
             </NavLink>
           </li>
   );
-}
+};
 
 export default DialogItem;  

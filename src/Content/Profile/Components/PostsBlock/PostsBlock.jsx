@@ -5,7 +5,7 @@ import classes from './PostsBlock.module.css';
 
 const PostsBlock = (props) => {
   let posts = props.posts.posts.map( item => {
-    return <Post className={classes.postsBlock__post} avatar={props.avatar} date={item.date} text={item.text}/>;
+    return <Post className={classes.postsBlock__post} avatar={props.avatar} postDate={item.postDate} text={item.text}/>;
   });
   return(
           <div className={`${classes.postsBlock} ${props.className}`}>

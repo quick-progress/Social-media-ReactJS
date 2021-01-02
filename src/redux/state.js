@@ -18,55 +18,78 @@ const store = {
       posts: [
         { id: '564641231', 
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ducimus porro tempore. Cumque, quasi aliquid pariatur rem delectus dolorem, quisquam possimus exercitationem blanditiis, eveniet optio. Similique dolores perspiciatis veniam velit.',
-          date: '19.12.2020',
+          postDate: {
+            date: '25.12.2020',
+            time: '00:00',
+          },
         },
         { id: '564641231', 
           text: 'Мой первый пост',
-          date: '17.12.2020',
+          postDate: {
+            date: '22.12.2020',
+            time: '00:00'
+          },
         },
         { id: '564641231', 
           text: 'Мой первый пост',
-          date: '17.12.2020',
+          postDate: {
+            date: '20.12.2020',
+            time: '00:00'
+          },
         },
         { id: '345235345', 
           text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ducimus porro tempore. Cumque, quasi aliquid pariatur rem delectus dolorem, quisquam possimus exercitationem blanditiis, eveniet optio. Similique dolores perspiciatis veniam velit.',
-          date: '14.12.2020',
+          postDate: {
+            date: '17.12.2020',
+            time: '00:00'
+          },
         },
         { id: '456745567', 
           text: 'Мой ТРетий пост',
-          date: '13.12.2020',
+          postDate: {
+            date: '16.12.2020',
+            time: '00:00'
+          },
         },
       ],
       newPostText: '',
     },
 
-    dialogs: [{ id: 'mark123456', name: 'Марк', messages: [
-                                                              { id: '123', message: '1 сообщение Марк', time: '10:50', date: '20.12.2020'},
-                                                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020'}
-                                                            ],
+    dialogs: [{ id: 'mark123456', 
+                name: 'Марк', 
+                messages: [
+                            { id: '123', message: '1 сообщение Марк', time: '10:50', date: '20.12.2020', condition: 'read'},
+                            { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                            { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                            { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
+                          ],
                 },
-                { id: 'valentin12456', name: 'Валентин', messages: [
-                                                              { id: '123', message: '1 сообщение Валентин', time: '10:50', date: '20.12.2020'},
-                                                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020'}
-                                                            ],
+                { id: 'valentin12456', 
+                  name: 'Валентин', 
+                  messages: [
+                              { id: '123', message: '1 сообщение Валентин', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
+                            ],
                 },
-                { id: 'pavel12456', name: 'Павел', messages: [
-                                                              { id: '123', message: '1 сообщение Павел', time: '10:50', date: '20.12.2020'},
-                                                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020'},
-                                                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020'}
-                                                            ],
+                { id: 'pavel12456', 
+                  name: 'Павел', 
+                  messages: [
+                              { id: '123', message: '1 сообщение Павел', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
+                            ],
                 },
-                { id: 'Andrey123456', name: 'Андрей', messages: [
-                                                              { id: '123', message: '1 сообщение Андрей', time: '10:50', date: '20.12.2020' },
-                                                              { id: '456', message: '2 сообщение Андрей', time: '10:50', date: '20.12.2020' },
-                                                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020' },
-                                                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020' }
-                                                            ],
+                { id: 'Andrey123456', 
+                  name: 'Андрей', 
+                  messages: [
+                              { id: '123', message: '1 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '456', message: '2 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
+                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
+                            ],
                 },],
   },
   _observerState(state) {
@@ -99,13 +122,18 @@ const store = {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   },
 
-  _getDateNow() {
+  _getCurrentDate() {
+    const today = new Date(),
+          day = (today.getDate() < 10)? `0${today.getDate()}`: today.getDate(),
+          month = ( (today.getMonth() + 1) < 10)? `0${(today.getMonth() + 1)}`: (today.getMonth() + 1);
+    return `${day}.${month}.${today.getFullYear()}`;
+  },
+
+  _getCurrentTime() {
     const today = new Date();
-    const day = (today.getDate() < 10)? `0${today.getDate()}`: today.getDate();
-    const month = ( (today.getMonth() + 1) < 10)? `0${(today.getMonth() + 1)}`: (today.getMonth() + 1);
-    let todaysDate = `${day}.${month}.${today.getFullYear()}`,
-        time = `${today.getHours()}:${today.getMinutes()}`;
-    return `${time}, ${todaysDate}`;
+    const hours = (today.getHours() < 10)? `0${today.getHours()}`: today.getHours(),
+          minutes = (today.getMinutes() < 10)? `0${today.getMinutes()}`: today.getMinutes();
+    return `${hours}:${minutes}`;
   },
 
   dispatch(action) {
@@ -115,7 +143,10 @@ const store = {
         let newPost = {
           id: this.getNewId(),
           text: this._state.postPage.newPostText,
-          date: this._getDateNow(),
+          postDate: {
+            date: this._getCurrentDate(),
+            time: this._getCurrentTime(),
+          },
         };
         this._state.postPage.posts.unshift(newPost)
         this._observerState(this._state);

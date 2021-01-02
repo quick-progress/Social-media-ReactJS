@@ -4,7 +4,7 @@ import Message from './../Message/Message';
 
 const DailogsList = (props) => {
   return(
-          <div className={classes.messagesBlock}>
+          <div className={`${classes.messagesBlock} ${props.className}`}>
             <Message message="Привет!"/>
             <Message message="Как дела?"/>
             <Message message="Шо делаешь?"/>

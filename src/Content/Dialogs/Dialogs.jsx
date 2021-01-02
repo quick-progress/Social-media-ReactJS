@@ -30,6 +30,6 @@ const Dialog = (props) => {
             </div>
           </div>
   );
-};//messagesBlock
+};
 
 export default Dialog;
