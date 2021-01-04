@@ -7,9 +7,9 @@ const Message = (props) => {
 
   return(
           <div className={`${classes.message} ${condition} ${owner}`} value={props.message.id}>
+            <span className={classes.message__info}>{`${props.message.time}, ${props.message.date}`}</span>
             <div className={classes.message__wrap}>
               <span className={classes.message__text}>{props.message.message}</span>
-              <span className={classes.message__info}>{`${props.message.time}, ${props.message.date}`}</span>
             </div>
           </div>
   );

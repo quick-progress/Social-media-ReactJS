@@ -4,18 +4,25 @@
   
 .message
   width: 100%
-  margin-bottom: 5px
   display: flex
+  padding: 5px 10px
+  align-items: flex-end
   &_my
     justify-content: flex-end
-  &_my &__wrap
-    background-color: #bbd8ff
-    color: #372a2a
   &_his
+    flex-direction: row-reverse
+    justify-content: flex-end
+  &_my &__wrap
+    background-color: #a7cdfd
+    margin-left: 10px
+  &_his &__wrap
+    background-color: #ffffff
+    margin-right: 10px
   &_read
+    background: none
   &_unread
+    background-color: #0693ff12
   &__wrap
-    background-color: #fff
     color: #372a2a
     display: flex
     padding: 5px 15px
@@ -32,3 +39,4 @@
     +semiBold
     font-size: 11px
     color: #929292
+    

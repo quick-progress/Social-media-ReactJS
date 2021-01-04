@@ -35,7 +35,7 @@ const Dialog = (props) => {
               <div className="messagesBlock">
                 {messagesBlocks}
               </div>
-              <NewMessage dispatch={props.dispatch} newMessageText={props.data.newMessage.message} interlocutor={props.data.dailogs}/>
+              <NewMessage dispatch={props.dispatch} newMessageText={props.data.newMessageText.message} interlocutor={props.data.dailogs}/>
             </div>
           </div>
   );

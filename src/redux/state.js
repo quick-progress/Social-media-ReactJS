@@ -95,7 +95,7 @@ const store = {
                                 { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
                               ],
                   },],
-      newMessage: {
+      newMessageText: {
         recipient: '',
         message: '',
       },
@@ -125,10 +125,11 @@ const store = {
     this._observerState(this._state);
   },
   _addMessage() {
-    if (this._state.dialogsList.newMessage.message === '' || this._state.dialogsList.newMessage.message === undefined) return;
-    let newMessage = {
+    let newMessageText= this._state.dialogsList.newMessageText.message;
+    if (newMessageText === '' || newMessageText === undefined || newMessageText === ' ') return;
+    let newMessageBody = {
       id: this.getNewId(),
-      message: this._state.dialogsList.newMessage.message,
+      message: this._state.dialogsList.newMessageText.message,
       date: this._getCurrentDate(),
       time: this._getCurrentTime(),
       condition: 'unread',
@@ -136,14 +137,10 @@ const store = {
     };
 
     for (let i = 0, l = this._state.dialogsList.dialogs.length; i < l; i++) {
-      if ( this._state.dialogsList.newMessage.recipient !== this._state.dialogsList.dialogs[i].id ) continue;
-      this._state.dialogsList.dialogs[i].messages.push(newMessage);
+      if ( this._state.dialogsList.newMessageText.recipient !== this._state.dialogsList.dialogs[i].id ) continue;
+      this._state.dialogsList.dialogs[i].messages.push(newMessageBody);
     };
-    console.log(newMessage);
-    this._observerState(this._state);
-  },
-  changeNewPostText(newText) {
-    this._state.postPage.newPostText = newText;
+    console.log(newMessageBody);
     this._observerState(this._state);
   },
   getNewId(min = 0, max = 10000000) {
@@ -179,11 +176,11 @@ const store = {
         this._addMessage();
         break;
       case CHANGE_NEW_MESSAGE_TEXT:
-        this._state.dialogsList.newMessage.message = action.newText;
+        this._state.dialogsList.newMessageText.message = action.newText;
         this._observerState(this._state);
         break;
       case CHANGE_RECIPIENT:
-        this._state.dialogsList.newMessage.recipient = action.recipient;
+        this._state.dialogsList.newMessageText.recipient = action.recipient;
         this._observerState(this._state);
         break;
       default: 
