@@ -15,7 +15,7 @@ function Content(props) {
             <main className="main">
               <Route exact path="/profile" render={ () => <Profile userdata={props.data} dispatch={props.dispatch}/>}/>
               <Route exact path="/news" component={News}/>
-              <Route exact path="/dialogs" render={ () => <Dialogs data={props.data.dialogs}/>}/>
+              <Route path="/dialogs" render={ () => <Dialogs data={props.data.dialogsList} dispatch={props.dispatch}/>}/>
               <Route exact path="/music" component={Music}/>
               <Route exact path="/settings" component={Settings}/>
             </main>

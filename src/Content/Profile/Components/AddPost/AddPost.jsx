@@ -20,7 +20,7 @@ const AddPost = (props) => {
     if (evnt.code !== 'Enter') return;
     evnt.preventDefault();
     addNewPost();
-  }
+  };
 
   return(
           <div className={`${classes.addPost} ${props.className}`}>

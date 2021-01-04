@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST',
-      CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
+      CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT',
+      ADD_MESSAGE = 'ADD-MESSAGE',
+      CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT',
+      CHANGE_RECIPIENT = 'CHANGE-RECIPIENT';
 
 const store = {
   _state: {
@@ -55,42 +58,48 @@ const store = {
       newPostText: '',
     },
 
-    dialogs: [{ id: 'mark123456', 
-                name: 'Марк', 
-                messages: [
-                            { id: '123', message: '1 сообщение Марк', time: '10:50', date: '20.12.2020', condition: 'read'},
-                            { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                            { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                            { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
-                          ],
-                },
-                { id: 'valentin12456', 
-                  name: 'Валентин', 
+    dialogsList: {
+      dialogs: [{ id: 'mark123456', 
+                  name: 'Марк', 
                   messages: [
-                              { id: '123', message: '1 сообщение Валентин', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
+                              { id: '123', message: '1 сообщение Марк', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
                             ],
-                },
-                { id: 'pavel12456', 
-                  name: 'Павел', 
-                  messages: [
-                              { id: '123', message: '1 сообщение Павел', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
-                            ],
-                },
-                { id: 'Andrey123456', 
-                  name: 'Андрей', 
-                  messages: [
-                              { id: '123', message: '1 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '456', message: '2 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'},
-                              { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read'}
-                            ],
-                },],
+                  },
+                  { id: 'valentin12456', 
+                    name: 'Валентин', 
+                    messages: [
+                                { id: '123', message: '1 сообщение Валентин', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                              ],
+                  },
+                  { id: 'pavel12456', 
+                    name: 'Павел', 
+                    messages: [
+                                { id: '123', message: '1 сообщение Павел', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                              ],
+                  },
+                  { id: 'Andrey123456', 
+                    name: 'Андрей', 
+                    messages: [
+                                { id: '123', message: '1 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '456', message: '2 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                                { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                              ],
+                  },],
+      newMessage: {
+        recipient: '',
+        message: '',
+      },
+    },
   },
   _observerState(state) {
 
@@ -102,21 +111,42 @@ const store = {
     this._observerState = observer;
   },
 
-  addPost() {
+  _addPost() {
     if (this._state.postPage.newPostText === '') return;
     let newPost = {
       id: this.getNewId(),
       text: this._state.postPage.newPostText,
-      date: '02.01.2021',
+      postDate: {
+        date: this._getCurrentDate(),
+        time: this._getCurrentTime(),
+      },
     };
     this._state.postPage.posts.unshift(newPost)
+    this._observerState(this._state);
+  },
+  _addMessage() {
+    if (this._state.dialogsList.newMessage.message === '' || this._state.dialogsList.newMessage.message === undefined) return;
+    let newMessage = {
+      id: this.getNewId(),
+      message: this._state.dialogsList.newMessage.message,
+      date: this._getCurrentDate(),
+      time: this._getCurrentTime(),
+      condition: 'unread',
+      whose: 'my',
+    };
+
+    for (let i = 0, l = this._state.dialogsList.dialogs.length; i < l; i++) {
+      if ( this._state.dialogsList.newMessage.recipient !== this._state.dialogsList.dialogs[i].id ) continue;
+      this._state.dialogsList.dialogs[i].messages.push(newMessage);
+    };
+    console.log(newMessage);
     this._observerState(this._state);
   },
   changeNewPostText(newText) {
     this._state.postPage.newPostText = newText;
     this._observerState(this._state);
   },
-  getNewId(min = 0, max = 10000) {
+  getNewId(min = 0, max = 10000000) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor( Math.random() * (max - min + 1) ) + min;
@@ -139,20 +169,21 @@ const store = {
   dispatch(action) {
     switch(action.type) {
       case ADD_POST: 
-        if (this._state.postPage.newPostText === '') return;
-        let newPost = {
-          id: this.getNewId(),
-          text: this._state.postPage.newPostText,
-          postDate: {
-            date: this._getCurrentDate(),
-            time: this._getCurrentTime(),
-          },
-        };
-        this._state.postPage.posts.unshift(newPost)
-        this._observerState(this._state);
+        this._addPost();
         break;
       case CHANGE_NEW_POST_TEXT:
         this._state.postPage.newPostText = action.newText;
+        this._observerState(this._state);
+        break;
+      case ADD_MESSAGE: 
+        this._addMessage();
+        break;
+      case CHANGE_NEW_MESSAGE_TEXT:
+        this._state.dialogsList.newMessage.message = action.newText;
+        this._observerState(this._state);
+        break;
+      case CHANGE_RECIPIENT:
+        this._state.dialogsList.newMessage.recipient = action.recipient;
         this._observerState(this._state);
         break;
       default: 
@@ -164,3 +195,9 @@ export default store;
 export const addPostActionCreator = () => ({ type: ADD_POST, });
 
 export const changeNewPostActionCreator = (text) => ({ type: CHANGE_NEW_POST_TEXT, newText: text, });
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE, });
+
+export const changeNewMessageActionCreator = (text) => ({ type: CHANGE_NEW_MESSAGE_TEXT, newText: text, });
+
+export const changeRecipientActionCreator = (recipientID) => ({ type: CHANGE_RECIPIENT, recipient: recipientID, });

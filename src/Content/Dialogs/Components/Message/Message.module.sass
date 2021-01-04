@@ -2,7 +2,33 @@
 @import './../../../Colors'
 @import './../../../Fonts'
   
-.messagesBlock
-  height: 100%
-  background-color: #ebf2ff
+.message
   width: 100%
+  margin-bottom: 5px
+  display: flex
+  &_my
+    justify-content: flex-end
+  &_my &__wrap
+    background-color: #bbd8ff
+    color: #372a2a
+  &_his
+  &_read
+  &_unread
+  &__wrap
+    background-color: #fff
+    color: #372a2a
+    display: flex
+    padding: 5px 15px
+    border-radius: 5px
+    flex-direction: column
+    width: fit-content
+    max-width: 450px
+  &__text
+    +regular
+    font-size: 16px
+    margin-bottom: 2px
+    line-height: 1.2em
+  &__info
+    +semiBold
+    font-size: 11px
+    color: #929292

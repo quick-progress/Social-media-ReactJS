@@ -1,15 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import classes from './MessagesBlock.module.css';
 import Message from './../Message/Message';
 
-const DailogsList = (props) => {
+const MessagesBlock = (props) => { 
+  let messagesItems = props.dialog.messages.map( item => {
+    return (<Message message={item}/>);
+  });
+  
   return(
           <div className={`${classes.messagesBlock} ${props.className}`}>
-            <Message message="Привет!"/>
-            <Message message="Как дела?"/>
-            <Message message="Шо делаешь?"/>
+            {messagesItems}
           </div>
   );
 }
 
-export default DailogsList;
+export default MessagesBlock;
