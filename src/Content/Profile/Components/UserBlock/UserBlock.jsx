@@ -1,5 +1,6 @@
 import React from "react";
 import classes from './UserBlock.module.css';
+import {NavLink} from 'react-router-dom';
 
 const UserBlock = (props) => {
   return(
@@ -11,7 +12,7 @@ const UserBlock = (props) => {
                 <li className={classes.userDataBlock__infoItem}>{props.userdata.location}</li>
               </ul>
             </div>
-            <button className={classes.userDataBlock__edit}>Редактировать</button>
+            <NavLink className={classes.userDataBlock__edit} to="/profile/edit">Редактировать</NavLink>
           </div>
   );
 }

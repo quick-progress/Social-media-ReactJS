@@ -6,14 +6,15 @@ import PostsBlock from './Components/PostsBlock/PostsBlock';
 import './Profile.css';
 
 const Settings = (props) => {
+
   return(
           <div className="profile">
-            <ProfileCover className="profile__coverBlock" profileCover={props.userdata.user.profileCover}/>
+            <ProfileCover className="profile__coverBlock" profileCover={props.userdata.profileCover}/>
             <div className="profile__userDataBlock">
-              <PhotoBlock className="profile__photoBlock" photo={props.userdata.user.photo}/>
-              <UserBlock userdata={props.userdata.user}/>
+              <PhotoBlock className="profile__photoBlock" photo={props.userdata.photo}/>
+              <UserBlock userdata={props.userdata}/>
             </div>
-            <PostsBlock posts={props.userdata.postPage} avatar={props.userdata.user.photo} dispatch={props.dispatch}/>
+            <PostsBlock posts={props.posts.posts} avatar={props.userdata.photo} dispatch={props.dispatch}/>
           </div>
   );
 };

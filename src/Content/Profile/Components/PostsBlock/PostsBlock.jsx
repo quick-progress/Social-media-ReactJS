@@ -4,7 +4,7 @@ import AddPost from './../AddPost/AddPost';
 import classes from './PostsBlock.module.css';
 
 const PostsBlock = (props) => {
-  let posts = props.posts.posts.map( item => {
+  let posts = props.posts.map( item => {
     return <Post className={classes.postsBlock__post} avatar={props.avatar} postDate={item.postDate} text={item.text}/>;
   });
   return(
