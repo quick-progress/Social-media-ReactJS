@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from 'react-router-dom';
 import classes from './DialogItem.module.css';
-import {changeRecipientActionCreator} from './../../../../redux/state';
+import {changeRecipientActionCreator} from './../../../../redux/dialog-reducer';
 
 
 const DialogItem = (props) => {
@@ -9,7 +9,6 @@ const DialogItem = (props) => {
 
   const changeRecipient = () => {
     props.dispatch( changeRecipientActionCreator(props.id) );
-    console.log('Messages block is load')
   };
 
   return(

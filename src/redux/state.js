@@ -1,8 +1,5 @@
-const ADD_POST = 'ADD-POST',
-      CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT',
-      ADD_MESSAGE = 'ADD-MESSAGE',
-      CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT',
-      CHANGE_RECIPIENT = 'CHANGE-RECIPIENT';
+import {dialogReducer} from './dialog-reducer';
+import {profileReducer} from './profile-reducer';
 
 const store = {
   _state: {
@@ -101,100 +98,23 @@ const store = {
       },
     },
   },
+  
   _observerState(state) {
 
   },
   getState() {
     return this._state;
   },
+  
   subscribe(observer) {
     this._observerState = observer;
   },
-
-  _addPost() {
-    if (this._state.postPage.newPostText === '') return;
-    let newPost = {
-      id: this.getNewId(),
-      text: this._state.postPage.newPostText,
-      postDate: {
-        date: this._getCurrentDate(),
-        time: this._getCurrentTime(),
-      },
-    };
-    this._state.postPage.posts.unshift(newPost)
-    this._observerState(this._state);
-  },
-  _addMessage() {
-    let newMessageText= this._state.dialogsList.newMessageText.message;
-    if (newMessageText === '' || newMessageText === undefined || newMessageText === ' ') return;
-    let newMessageBody = {
-      id: this.getNewId(),
-      message: this._state.dialogsList.newMessageText.message,
-      date: this._getCurrentDate(),
-      time: this._getCurrentTime(),
-      condition: 'unread',
-      whose: 'my',
-    };
-
-    for (let i = 0, l = this._state.dialogsList.dialogs.length; i < l; i++) {
-      if ( this._state.dialogsList.newMessageText.recipient !== this._state.dialogsList.dialogs[i].id ) continue;
-      this._state.dialogsList.dialogs[i].messages.push(newMessageBody);
-    };
-    console.log(newMessageBody);
-    this._observerState(this._state);
-  },
-  getNewId(min = 0, max = 10000000) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor( Math.random() * (max - min + 1) ) + min;
-  },
-
-  _getCurrentDate() {
-    const today = new Date(),
-          day = (today.getDate() < 10)? `0${today.getDate()}`: today.getDate(),
-          month = ( (today.getMonth() + 1) < 10)? `0${(today.getMonth() + 1)}`: (today.getMonth() + 1);
-    return `${day}.${month}.${today.getFullYear()}`;
-  },
-
-  _getCurrentTime() {
-    const today = new Date();
-    const hours = (today.getHours() < 10)? `0${today.getHours()}`: today.getHours(),
-          minutes = (today.getMinutes() < 10)? `0${today.getMinutes()}`: today.getMinutes();
-    return `${hours}:${minutes}`;
-  },
-
+  
   dispatch(action) {
-    switch(action.type) {
-      case ADD_POST: 
-        this._addPost();
-        break;
-      case CHANGE_NEW_POST_TEXT:
-        this._state.postPage.newPostText = action.newText;
-        this._observerState(this._state);
-        break;
-      case ADD_MESSAGE: 
-        this._addMessage();
-        break;
-      case CHANGE_NEW_MESSAGE_TEXT:
-        this._state.dialogsList.newMessageText.message = action.newText;
-        this._observerState(this._state);
-        break;
-      case CHANGE_RECIPIENT:
-        this._state.dialogsList.newMessageText.recipient = action.recipient;
-        this._observerState(this._state);
-        break;
-      default: 
-    };
+    this._state.dialogList = dialogReducer(this._state.dialogsList, action);
+    this._state.postPage = profileReducer(this._state.postPage, action);
+    this._observerState(this._state);
   },
 };
+
 export default store;
-
-export const addPostActionCreator = () => ({ type: ADD_POST, });
-
-export const changeNewPostActionCreator = (text) => ({ type: CHANGE_NEW_POST_TEXT, newText: text, });
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE, });
-
-export const changeNewMessageActionCreator = (text) => ({ type: CHANGE_NEW_MESSAGE_TEXT, newText: text, });
-
-export const changeRecipientActionCreator = (recipientID) => ({ type: CHANGE_RECIPIENT, recipient: recipientID, });

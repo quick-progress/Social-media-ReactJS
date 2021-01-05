@@ -1,42 +1,35 @@
-import state from 'state';
-import {observerState, getNewId, getCurrentDate, getCurrentTime} from './bundle'
+import {getNewId, getCurrentDate, getCurrentTime} from './reducersFunctions'
 
 const ADD_MESSAGE = 'ADD-MESSAGE',
       CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT',
       CHANGE_RECIPIENT = 'CHANGE-RECIPIENT';
 
-export const dialogReducer = (state = state.dialogsList, action) => {
+export const dialogReducer = (state, action) => {
   switch(action.type) {
     case ADD_MESSAGE: 
-      addMessage();
-      break;
+      let newMessageText= state.newMessageText.message;
+      if (newMessageText === '' || newMessageText === undefined || newMessageText === ' ') return;
+      let newMessageBody = {
+        id: getNewId(),
+        message: state.newMessageText.message,
+        date: getCurrentDate(),
+        time: getCurrentTime(),
+        condition: 'unread',
+        whose: 'my',
+      };
+      for (let i = 0, sdl = state.dialogs.length; i < sdl; i++) {
+        if ( state.newMessageText.recipient !== state.dialogs[i].id ) continue;
+        state.dialogs[i].messages.push(newMessageBody);
+      };
+      return state;
     case CHANGE_NEW_MESSAGE_TEXT:
       state.newMessageText.message = action.newText;
-      //observerState(state);
-      break;
+      return state;
     case CHANGE_RECIPIENT:
       state.newMessageText.recipient = action.recipient;
-      //observerState(state);
-      break;
+      return state;
     default: 
-  };
-  return state;
-};
-
-function addMessage() {
-  let newMessageText= state.newMessageText.message;
-  if (newMessageText === '' || newMessageText === undefined || newMessageText === ' ') return;
-  let newMessageBody = {
-    id: getNewId(),
-    message: state.newMessageText.message,
-    date: getCurrentDate(),
-    time: getCurrentTime(),
-    condition: 'unread',
-    whose: 'my',
-  };
-  for (let i = 0, l = state.dialogs.length; i < l; i++) {
-    if ( state.newMessageText.recipient !== state.dialogs[i].id ) continue;
-    state.dialogs[i].messages.push(newMessageBody);
+      return state;
   };
 };
 

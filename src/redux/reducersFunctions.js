@@ -1,11 +1,3 @@
-export function observerState(state) {
-
-};
-
-export function subscriber(observer) {
-  observerState = observer;
-};
-
 export function getNewId(min = 0, max = 10000000) {
   min = Math.ceil(min);
   max = Math.floor(max);
