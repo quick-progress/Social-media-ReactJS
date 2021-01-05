@@ -14,6 +14,7 @@ function Content(props) {
             <Header photo={props.data.user.photo} name={props.data.user.name}/>
             <main className="main">
               <Route exact path="/profile" render={ () => <Profile userdata={props.data} dispatch={props.dispatch}/>}/>
+              <Route exact path="/" render={ () => <Profile userdata={props.data} dispatch={props.dispatch}/>}/>
               <Route exact path="/news" component={News}/>
               <Route path="/dialogs" render={ () => <Dialogs data={props.data.dialogsList} dispatch={props.dispatch}/>}/>
               <Route exact path="/music" component={Music}/>

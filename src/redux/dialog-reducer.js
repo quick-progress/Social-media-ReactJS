@@ -4,7 +4,50 @@ const ADD_MESSAGE = 'ADD-MESSAGE',
       CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT',
       CHANGE_RECIPIENT = 'CHANGE-RECIPIENT';
 
-export const dialogReducer = (state, action) => {
+const initialState = {
+  dialogs: [{ id: 'mark123456', 
+              name: 'Марк', 
+              messages: [
+                          { id: '123', message: '1 сообщение Марк', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                          { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                          { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                          { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                        ],
+              },
+              { id: 'valentin12456', 
+                name: 'Валентин', 
+                messages: [
+                            { id: '123', message: '1 сообщение Валентин', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                          ],
+              },
+              { id: 'pavel12456', 
+                name: 'Павел', 
+                messages: [
+                            { id: '123', message: '1 сообщение Павел', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '456', message: '2 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                          ],
+              },
+              { id: 'Andrey123456', 
+                name: 'Андрей', 
+                messages: [
+                            { id: '123', message: '1 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '456', message: '2 сообщение Андрей', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '789', message: '3 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',},
+                            { id: '987', message: '4 сообщение', time: '10:50', date: '20.12.2020', condition: 'read', whose: 'his',}
+                          ],
+              },],
+  newMessageText: {
+    recipient: '',
+    message: '',
+  },
+};
+
+export const dialogReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_MESSAGE: 
       let newMessageText= state.newMessageText.message;
